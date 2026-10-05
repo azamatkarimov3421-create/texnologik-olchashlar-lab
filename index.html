@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Sohaning texnologik o'lchashlari va asboblari | NDKTU Laboratoriya Portali</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+  <link rel="stylesheet" href="styles.css?v=3.2">
+</head>
+<body>
+  <!-- Yuqori panel (Navbar) -->
+  <header class="navbar">
+    <div class="brand">
+      <div class="brand-logo">N</div>
+      <div>
+        <div class="brand-title">NDKTU • Laboratoriya portali</div>
+        <div class="brand-subtitle">Avtomatlashtirish va boshqaruv kafedrasi</div>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <button class="btn btn-secondary btn-sm" id="sound-toggle" onclick="toggleSound()" title="Asboblar ovozini yoqish/o'chirish">
+        <span id="sound-icon">🔊</span> Ovoz
+      </button>
+      <button class="btn btn-secondary btn-sm" onclick="openConverterModal()" title="O'lchov birliklari va termopara konverteri">
+        <span>📐</span> Konverter
+      </button>
+      <button class="btn btn-secondary btn-sm" id="theme-toggle" title="Mavzuni almashtirish">
+        <span id="theme-icon">🌙</span> Rejim
+      </button>
+      <button class="btn btn-primary btn-sm" onclick="switchTab('report')">
+        <span>📝</span> Hisobot tayyorlash
+      </button>
+    </div>
+  </header>
+
+  <!-- Asosiy ilova oynasi -->
+  <div class="app-container">
+    <!-- Chap panel: Laboratoriyalar ro'yxati -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="search-box">
+          <input type="text" id="search-input" placeholder="🔍 Laboratoriyani qidirish..." />
+        </div>
+      </div>
+      <div class="lab-list" id="lab-list">
+        <!-- JS orqali 8 ta laboratoriya chiqadi -->
+      </div>
+    </aside>
+
+    <!-- O'ng panel: Kontent -->
+    <main class="main-content">
+      <!-- Laboratoriya bosh sarlavhasi -->
+      <section class="lab-hero">
+        <div class="lab-badge" id="current-lab-num">Laboratoriya ishi №1</div>
+        <h1 id="current-lab-title">Termoelektrik hodisalar</h1>
+        <p id="current-lab-desc">Zeyebek, Peltye va Tomson effektlari, termoelementlarning ishlash asoslari.</p>
+
+        <!-- Tablar menyusi -->
+        <div class="nav-tabs">
+          <button class="tab-btn active" data-tab="simulator" onclick="switchTab('simulator')">⚡ Virtual Simulyator</button>
+          <button class="tab-btn" data-tab="guide" onclick="switchTab('guide')">📖 Qo'llanma & Nazariya</button>
+          <button class="tab-btn" data-tab="report" onclick="switchTab('report')">📝 Hisobot & Chop etish</button>
+          <button class="tab-btn" data-tab="quiz" onclick="switchTab('quiz')">💡 Test & Viktorina</button>
+        </div>
+      </section>
+
+      <!-- Tab kontenti -->
+      <section class="tab-content-area" id="tab-content">
+        <!-- JS orqali dinamik kontent yuklanadi -->
+      </section>
+    </main>
+  </div>
+
+  <!-- Birliklar Konverteri Modali -->
+  <div id="converter-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">📐 O'lchov birliklari va Texnik Konverter</div>
+        <button class="modal-close-btn" onclick="closeConverterModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="control-group">
+          <label>Konvertatsiya toifasi:</label>
+          <select id="conv-category" class="form-input" onchange="updateConverterUI()">
+            <option value="pressure">Bosim (bar, MPa, kPa, mm simob ustuni, psi)</option>
+            <option value="temp">Harorat (°C, K, °F)</option>
+            <option value="thermocouple">Termopara (Harorat ⇄ TermoEYuK mV)</option>
+          </select>
+        </div>
+        <div id="conv-dynamic-fields">
+          <!-- Dinamik kiritish maydonlari -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js?v=3.3"></script>
+  <script src="quiz_data.js?v=3.3"></script>
+  <script src="app.js?v=3.3"></script>
+</body>
+</html>
